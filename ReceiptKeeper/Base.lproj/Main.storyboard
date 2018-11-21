@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bjb-ce-S47">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Receipts-->
+        <scene sceneID="Odp-Ad-k9X">
+            <objects>
+                <tableViewController id="Ovs-Ex-f1S" customClass="ReceiptTableViewController" customModule="ReceiptKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lWf-7b-WsO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceiptCell" rowHeight="106" id="LGn-1S-c0K" customClass="ReceiptTableViewCell" customModule="ReceiptKeeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="106"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LGn-1S-c0K" id="VGY-xP-I6C">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R2X-Jv-kdh">
+                                            <rect key="frame" x="8" y="10" width="297" height="85.5"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="183" verticalHuggingPriority="240" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="gBT-XR-bAl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="85.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="bT0-1k-wgC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="762" axis="vertical" distribution="fillEqually" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="P3P-NA-cIV">
+                                                    <rect key="frame" x="80" y="0.0" width="217" height="85.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipt Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jk-qZ-bec">
+                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="58"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 25th, 2018" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeM-ro-ObP">
+                                                            <rect key="frame" x="0.0" y="28" width="217" height="57.5"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P3P-NA-cIV" firstAttribute="centerY" secondItem="R2X-Jv-kdh" secondAttribute="centerY" id="6bK-gh-ixU"/>
+                                                <constraint firstItem="P3P-NA-cIV" firstAttribute="top" secondItem="R2X-Jv-kdh" secondAttribute="top" id="9Re-bv-let"/>
+                                                <constraint firstAttribute="bottom" secondItem="P3P-NA-cIV" secondAttribute="bottom" id="iUs-fq-fGH"/>
+                                                <constraint firstAttribute="trailing" secondItem="P3P-NA-cIV" secondAttribute="trailing" id="qo9-2D-Fg0"/>
+                                                <constraint firstItem="P3P-NA-cIV" firstAttribute="leading" secondItem="gBT-XR-bAl" secondAttribute="trailing" constant="10" id="y6d-FU-Wpu"/>
+                                            </constraints>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-ed-XRz">
+                                            <rect key="frame" x="339" y="43" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="1Py-uk-Xvy"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="4qW-iP-skj"/>
+                                                <constraint firstAttribute="height" constant="20" id="VGb-9Y-oZm"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="next"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="R2X-Jv-kdh" secondAttribute="bottom" constant="10" id="1a9-ZE-ArI"/>
+                                        <constraint firstItem="XW6-ed-XRz" firstAttribute="centerY" secondItem="VGY-xP-I6C" secondAttribute="centerY" id="7Pk-Fv-cWI"/>
+                                        <constraint firstItem="R2X-Jv-kdh" firstAttribute="top" secondItem="VGY-xP-I6C" secondAttribute="top" constant="10" id="SLk-iZ-BJe"/>
+                                        <constraint firstItem="R2X-Jv-kdh" firstAttribute="leading" secondItem="VGY-xP-I6C" secondAttribute="leading" constant="8" id="T2Y-Df-95l"/>
+                                        <constraint firstAttribute="trailing" secondItem="R2X-Jv-kdh" secondAttribute="trailing" constant="70" id="boH-ar-f9X"/>
+                                        <constraint firstItem="XW6-ed-XRz" firstAttribute="trailing" secondItem="VGY-xP-I6C" secondAttribute="trailingMargin" id="ksr-iE-oXt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="receiptDate" destination="PeM-ro-ObP" id="dSq-yM-NJe"/>
+                                    <outlet property="receiptImage" destination="gBT-XR-bAl" id="qvn-PS-AdB"/>
+                                    <outlet property="receiptTitle" destination="5Jk-qZ-bec" id="WW1-5C-S9m"/>
+                                    <segue destination="nBe-z1-QRk" kind="show" identifier="ShowReceiptDetail" id="K6O-7T-sl4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ovs-Ex-f1S" id="7lW-NC-7Jc"/>
+                            <outlet property="delegate" destination="Ovs-Ex-f1S" id="07v-Y5-pOb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Receipts" id="pBV-nX-J3t">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9b7-Gr-cwT">
+                            <color key="tintColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="nBe-z1-QRk" kind="show" identifier="ShowCreateTask" id="w1s-up-KSw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zyn-aZ-xV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="373.60000000000002" y="100.29985007496252"/>
+        </scene>
+        <!--Receipt-->
+        <scene sceneID="S4Z-az-YC7">
+            <objects>
+                <viewController id="nBe-z1-QRk" customClass="ReceiptDetailViewController" customModule="ReceiptKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BgE-Si-5Uq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-GW-5XI">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wYy-Bv-qfB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                        <segments>
+                                            <segment title="Necessity"/>
+                                            <segment title="Important"/>
+                                            <segment title="Nonnecessity"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </segmentedControl>
+                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="uJO-RN-GX6">
+                                        <rect key="frame" x="0.0" y="48" width="375" height="355"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="355" id="QEZ-6e-mbu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJs-ZK-jsf">
+                                        <rect key="frame" x="0.0" y="413" width="375" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="Ye3-Qc-3mw"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter something about this receipt" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-hE-GvE">
+                                        <rect key="frame" x="0.0" y="451" width="375" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="BfW-ll-TMe"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VOg-GW-5XI" firstAttribute="leading" secondItem="hep-VL-VEz" secondAttribute="leading" id="5fC-ai-xh2"/>
+                            <constraint firstItem="VOg-GW-5XI" firstAttribute="trailing" secondItem="hep-VL-VEz" secondAttribute="trailing" id="7Jp-ZT-6YC"/>
+                            <constraint firstItem="VOg-GW-5XI" firstAttribute="top" secondItem="hep-VL-VEz" secondAttribute="top" id="Jjp-ig-Bpp"/>
+                            <constraint firstItem="hep-VL-VEz" firstAttribute="bottom" secondItem="VOg-GW-5XI" secondAttribute="bottom" id="nM0-pK-WzV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hep-VL-VEz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Receipt" id="y62-uB-H1c">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="a2M-kM-ffe">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="nBe-z1-QRk" id="RkF-7j-fxy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="uJO-RN-GX6" id="GCE-3g-m5k"/>
+                        <outlet property="receiptNotes" destination="lFE-hE-GvE" id="grU-VX-w7Q"/>
+                        <outlet property="receiptTitle" destination="fJs-ZK-jsf" id="tCi-3c-BvS"/>
+                        <outlet property="segmentControl" destination="wYy-Bv-qfB" id="gSS-eF-r8E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tMr-ts-04L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1138.4000000000001" y="85.907046476761622"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qV6-nj-27d">
+            <objects>
+                <navigationController id="bjb-ce-S47" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ang-KM-KbU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ovs-Ex-f1S" kind="relationship" relationship="rootViewController" id="y3K-1b-7HA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSF-Oz-zMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578" y="101"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add" width="512" height="512"/>
+        <image name="next" width="512" height="512"/>
+        <image name="noImage" width="1024" height="1024"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="K6O-7T-sl4"/>
+    </inferredMetricsTieBreakers>
+</document>
