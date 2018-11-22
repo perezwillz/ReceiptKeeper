@@ -76,18 +76,21 @@ class ReceiptDetailViewController: UIViewController , UITextViewDelegate, UIText
         }
         
         let  notes = receiptNotes.text
+        let priorityIndex = segmentControl.selectedSegmentIndex
+        let priority = ReceiptPriority.allCases[priorityIndex]
         guard let image = imageView.image else {return}
         let imageData: Data = image.pngData()!
         
         if let receipt  = receipt {
             //editing
             receipt.name = name
+            receipt.priority = priority.rawValue
             receipt.notes = notes
             receipt.imageData = imageData
         } else {
-            //new shit
+            //new stuff
             
-          let _ =  Receipt(name: name, notes: notes, imageData: imageData)
+            let _ =  Receipt(name: name, notes: notes,  imageData: imageData, priority : priority)
         }
         
         do {
@@ -102,12 +105,7 @@ class ReceiptDetailViewController: UIViewController , UITextViewDelegate, UIText
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
         if (gesture.view as? UIImageView) != nil {
-            print("Image Tapped")
-            
-            
-            
-            
-            
+         
             if !UIImagePickerController.isSourceTypeAvailable(.camera){
                 
                 let alertController = UIAlertController.init(title: nil, message: "Device has no camera.", preferredStyle: .alert)
@@ -141,10 +139,7 @@ class ReceiptDetailViewController: UIViewController , UITextViewDelegate, UIText
                 
                 self.present(actionSheet, animated:  true, completion: nil)
                 
-                
-                
             }
-            
             
         }
     }
@@ -171,6 +166,13 @@ class ReceiptDetailViewController: UIViewController , UITextViewDelegate, UIText
         imageView.image = UIImage(data: data)
         
         
+        let priority : ReceiptPriority
+        if let receiprtPriority  = receipt?.priority {
+            priority = ReceiptPriority(rawValue: receiprtPriority)!
+        } else {
+            priority = .nonnecessity
+        }
+        segmentControl.selectedSegmentIndex = ReceiptPriority.allCases.index(of : priority)!
     }
     
     @IBOutlet weak var segmentControl: UISegmentedControl!

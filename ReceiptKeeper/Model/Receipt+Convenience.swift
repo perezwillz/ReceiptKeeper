@@ -9,8 +9,17 @@
 import Foundation
 import CoreData
 
+enum ReceiptPriority : String , CaseIterable{
+    case necessity, important, nonnecessity
+}
+
+
 extension Receipt {
-    convenience init(name : String, notes : String? = nil , imageData : Data? = nil, managedObjectContext : NSManagedObjectContext = CoreDataStack.shared.mainContext){
+    convenience init(name : String,
+                     notes : String? = nil ,
+                     imageData : Data? = nil,
+                     priority : ReceiptPriority = .nonnecessity,
+                     managedObjectContext : NSManagedObjectContext = CoreDataStack.shared.mainContext){
         
         self.init(context: managedObjectContext)
         

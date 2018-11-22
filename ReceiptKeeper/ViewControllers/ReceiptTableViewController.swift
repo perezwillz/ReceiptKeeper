@@ -17,9 +17,10 @@ class ReceiptTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-     //  self.tableView.separatorColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         
-      //  self.tableView.separatorStyle = .none
+        for reseipt in receipts {
+            print("receipt priority : \(reseipt.priority)")
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
