@@ -11,38 +11,47 @@ import CoreData
 
 class ReceiptTableViewController: UITableViewController , NSFetchedResultsControllerDelegate{
 
-    
+   
     // MARK: - Table view data source
 
-   
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //Title of section header
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return fetchResultsController.sections?[section].name.capitalized
+    }
     
-        return fetchResultsController.fetchedObjects?.count ?? 0
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchResultsController.sections?.count ?? 1
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchResultsController.sections?[section].numberOfObjects ?? 0
+    }
+    
 
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //define initial state(before animation)
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
-        cell.layer.transform = rotationTransform
-        
-        //define the final state (after animation)
-        UIView.animate(withDuration: 1, animations: {
-            cell.layer.transform = CATransform3DIdentity })
-        
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiptCell", for: indexPath) as! ReceiptTableViewCell
-
+  
        let receipt = fetchResultsController.object(at: indexPath)
       
     cell.receiptImage.layer.cornerRadius = 4
         cell.receiptTitle.text = receipt.name
        
         cell.receiptImage.image = UIImage(data: receipt.imageData!)
+        
+        //Date
+        if let timeStamp = receipt.date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        let date = dateFormatter.string(from: timeStamp)
+        
+        cell.receiptDate.text = date
+        }
                 return cell
     }
+   
+    
  
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95.0
@@ -73,6 +82,20 @@ class ReceiptTableViewController: UITableViewController , NSFetchedResultsContro
         tableView.beginUpdates()
     }
   
+    //Changing section Info - Adding & Removing sections
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
@@ -113,7 +136,7 @@ class ReceiptTableViewController: UITableViewController , NSFetchedResultsContro
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                             managedObjectContext: moc, sectionNameKeyPath: nil,
+                                             managedObjectContext: moc, sectionNameKeyPath: "priority",
                                              cacheName: nil)
         
         frc.delegate = self

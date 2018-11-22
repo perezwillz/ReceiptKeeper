@@ -18,6 +18,8 @@ extension Receipt {
     convenience init(name : String,
                      notes : String? = nil ,
                      imageData : Data? = nil,
+                     date : Date = Date(),
+                     
                      priority : ReceiptPriority = .nonnecessity,
                      managedObjectContext : NSManagedObjectContext = CoreDataStack.shared.mainContext){
         
@@ -26,5 +28,6 @@ extension Receipt {
         self.name = name
         self.notes = notes
         self.imageData = imageData
+        self.date = date
     }
 }

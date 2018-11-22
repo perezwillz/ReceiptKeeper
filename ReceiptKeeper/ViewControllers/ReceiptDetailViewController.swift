@@ -87,6 +87,7 @@ class ReceiptDetailViewController: UIViewController , UITextViewDelegate, UIText
             receipt.priority = priority.rawValue
             receipt.notes = notes
             receipt.imageData = imageData
+            
         } else {
             //new stuff
             

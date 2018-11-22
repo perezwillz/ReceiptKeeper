@@ -30,6 +30,7 @@
 		B90C65B22191117400A91946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B90C65B9219111AD00A91946 /* ReceiptKeeper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReceiptKeeper.xcdatamodel; sourceTree = "<group>"; };
 		B937BC2E21A623F1001A9CCA /* ReceiptKeeper 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ReceiptKeeper 2.xcdatamodel"; sourceTree = "<group>"; };
+		B937BC2F21A6DFEB001A9CCA /* ReceiptKeeper 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ReceiptKeeper 3.xcdatamodel"; sourceTree = "<group>"; };
 		B9B9BB0B219114BA0050375B /* Receipt+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Convenience.swift"; sourceTree = "<group>"; };
 		B9B9BB0D219117300050375B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B9B9BB0F219138D70050375B /* ReceiptDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewController.swift; sourceTree = "<group>"; };
@@ -384,10 +385,11 @@
 		B90C65B8219111AD00A91946 /* ReceiptKeeper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B937BC2F21A6DFEB001A9CCA /* ReceiptKeeper 3.xcdatamodel */,
 				B937BC2E21A623F1001A9CCA /* ReceiptKeeper 2.xcdatamodel */,
 				B90C65B9219111AD00A91946 /* ReceiptKeeper.xcdatamodel */,
 			);
-			currentVersion = B937BC2E21A623F1001A9CCA /* ReceiptKeeper 2.xcdatamodel */;
+			currentVersion = B937BC2F21A6DFEB001A9CCA /* ReceiptKeeper 3.xcdatamodel */;
 			path = ReceiptKeeper.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
