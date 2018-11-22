@@ -9,23 +9,16 @@
 import UIKit
 import CoreData
 
-class ReceiptTableViewController: UITableViewController {
+class ReceiptTableViewController: UITableViewController , NSFetchedResultsControllerDelegate{
 
     
     // MARK: - Table view data source
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-        
-        for reseipt in receipts {
-            print("receipt priority : \(reseipt.priority)")
-        }
-    }
+   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        return receipts.count
+        return fetchResultsController.fetchedObjects?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -39,13 +32,10 @@ class ReceiptTableViewController: UITableViewController {
         
     }
     
-    
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiptCell", for: indexPath) as! ReceiptTableViewCell
 
-       let receipt = receipts[indexPath.row]
+       let receipt = fetchResultsController.object(at: indexPath)
       
     cell.receiptImage.layer.cornerRadius = 4
         cell.receiptTitle.text = receipt.name
@@ -61,7 +51,7 @@ class ReceiptTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-           let receipt = receipts[indexPath.row]
+           let receipt = fetchResultsController.object(at: indexPath)
             let moc = CoreDataStack.shared.mainContext
             moc.delete(receipt)
             
@@ -74,9 +64,36 @@ class ReceiptTableViewController: UITableViewController {
         }
     }
  
-
+    //Mark: - NSFetchedResultControllerDelegate
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
   
-
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert :
+            guard let newIndexPath = newIndexPath else {return}
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .delete :
+            guard let indexPath = indexPath else {return}
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        case .move :
+            guard let oldIndexPath = indexPath,
+            let newIndexPath = newIndexPath else {return}
+            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+        case .update :
+            guard let indexPath = indexPath else {return}
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            
+        }
+    }
     
     // MARK: - Navigation
 
@@ -85,20 +102,23 @@ class ReceiptTableViewController: UITableViewController {
         if segue.identifier == "ShowReceiptDetail" {
             let detailVC = segue.destination as! ReceiptDetailViewController
             if let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.receipt = receipts[indexPath.row]
+                detailVC.receipt =  fetchResultsController.object(at: indexPath)
             }
         }
     }
     
-    var receipts : [Receipt] {
-    let fetchRequest : NSFetchRequest<Receipt> = Receipt.fetchRequest()
+    
+    lazy var fetchResultsController : NSFetchedResultsController<Receipt> = {
+        let fetchRequest : NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let moc = CoreDataStack.shared.mainContext
-        do {
-            return try moc.fetch(fetchRequest)
-        } catch {
-            NSLog("Error fetching receipts")
-            return []
-        }
-    }
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                             managedObjectContext: moc, sectionNameKeyPath: nil,
+                                             cacheName: nil)
+        
+        frc.delegate = self
+      try!  frc.performFetch()
+        return frc
+    }()
     
 }
