@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B90C65A72191117000A91946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C65A62191117000A91946 /* AppDelegate.swift */; };
-		B90C65A92191117000A91946 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C65A82191117000A91946 /* ViewController.swift */; };
 		B90C65AC2191117000A91946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90C65AA2191117000A91946 /* Main.storyboard */; };
 		B90C65AE2191117300A91946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B90C65AD2191117300A91946 /* Assets.xcassets */; };
 		B90C65B12191117300A91946 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90C65AF2191117300A91946 /* LaunchScreen.storyboard */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		B90C65A32191117000A91946 /* ReceiptKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReceiptKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90C65A62191117000A91946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B90C65A82191117000A91946 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B90C65AB2191117000A91946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B90C65AD2191117300A91946 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B90C65B02191117300A91946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				B90C65A62191117000A91946 /* AppDelegate.swift */,
-				B90C65A82191117000A91946 /* ViewController.swift */,
 				B90C65BB219111D400A91946 /* Model */,
 				B9B9BB13219139010050375B /* ViewControllers */,
 				B90C65AA2191117000A91946 /* Main.storyboard */,
@@ -173,7 +170,6 @@
 			files = (
 				B9B9BB0E219117300050375B /* CoreDataStack.swift in Sources */,
 				B9B9BB0C219114BA0050375B /* Receipt+Convenience.swift in Sources */,
-				B90C65A92191117000A91946 /* ViewController.swift in Sources */,
 				B90C65BA219111AD00A91946 /* ReceiptKeeper.xcdatamodeld in Sources */,
 				B9B9BB1521913CB10050375B /* ReceiptTableViewCell.swift in Sources */,
 				B9B9BB10219138D70050375B /* ReceiptDetailViewController.swift in Sources */,
@@ -323,7 +319,7 @@
 		B90C65B62191117400A91946 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3LN6LR5X2;
 				INFOPLIST_FILE = ReceiptKeeper/Info.plist;
@@ -342,7 +338,7 @@
 		B90C65B72191117400A91946 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3LN6LR5X2;
 				INFOPLIST_FILE = ReceiptKeeper/Info.plist;

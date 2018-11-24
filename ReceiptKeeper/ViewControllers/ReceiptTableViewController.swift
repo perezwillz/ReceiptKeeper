@@ -51,8 +51,6 @@ class ReceiptTableViewController: UITableViewController , NSFetchedResultsContro
                 return cell
     }
    
-    
- 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95.0
     }
@@ -133,7 +131,7 @@ class ReceiptTableViewController: UITableViewController , NSFetchedResultsContro
     
     lazy var fetchResultsController : NSFetchedResultsController<Receipt> = {
         let fetchRequest : NSFetchRequest<Receipt> = Receipt.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                              managedObjectContext: moc, sectionNameKeyPath: "priority",
