@@ -20,7 +20,7 @@ extension Receipt {
                      imageData : Data? = nil,
                      date : Date = Date(),
                      
-                     priority : ReceiptPriority = .nonnecessity,
+                     priority : ReceiptPriority? = nil,
                      managedObjectContext : NSManagedObjectContext = CoreDataStack.shared.mainContext){
         
         self.init(context: managedObjectContext)
