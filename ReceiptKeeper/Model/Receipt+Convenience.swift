@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 enum ReceiptPriority : String , CaseIterable{
-    case necessity, important, nonnecessity
+    case necessity, important, nonnecessity 
 }
 
 
@@ -20,7 +20,7 @@ extension Receipt {
                      imageData : Data? = nil,
                      date : Date = Date(),
                      
-                     priority : ReceiptPriority? = nil,
+                     priority : ReceiptPriority,
                      managedObjectContext : NSManagedObjectContext = CoreDataStack.shared.mainContext){
         
         self.init(context: managedObjectContext)
@@ -29,5 +29,6 @@ extension Receipt {
         self.notes = notes
         self.imageData = imageData
         self.date = date
+        self.priority = priority.rawValue
     }
 }
